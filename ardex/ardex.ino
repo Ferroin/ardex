@@ -3,9 +3,7 @@
 #include "config.h"
 
 const int info = 13;
-unsigned char state = INIT_STATE;1
-int adata, itmp;
-unsigned char data, tmp;
+static unsigned char state = INIT_STATE;
 volatile unsigned char sinfo = 0;
 
 #ifdef USE_INT0
@@ -21,6 +19,8 @@ void int1() {
 #endif // USE_INT1
 
 void i2c_rx(int nBytes) {
+  static int itmp;
+  static unsigned char tmp;
   sinfo |= 4;
   tmp = state;
   state = Wire.read();
@@ -50,6 +50,8 @@ void i2c_rx(int nBytes) {
 }
 
 void i2c_tx() {
+  static int adata;
+  static unsigned char tmp, data;
   Wire.write(sinfo);
   sinfo ^= sinfo;
   Wire.write(state);
