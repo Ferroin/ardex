@@ -1,0 +1,15 @@
+ardex, an Arduino Nano based I/O expander.
+
+ardex is a piece of software for the Arduino Nano that allows you to
+use it as an I2C based I/O expander.  It provides 4 digital outputs,
+3 PWM outputs, up to 8 analog inputs, and optionally a simple PRNG.
+It is all controlled via I2C, and has a user selectable bus address.
+
+Installation is as simple as opening the sketch in the Arduino IDE, double
+checking the values in config.h, and then uploading to the Arduino Nano.
+
+Theoretically, this should work with any ATMega328 based Arduino, but
+I can't guarantee that it will work with anything other than the Nano.
+
+The I2C address is 0x55, but it can be set to anything you want in
+config.h.
